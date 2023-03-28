@@ -1,13 +1,15 @@
+package converts;
+
 import java.util.*;
 
-public class FiniteAutomaton {
+public class Converter {
     private Set<String> states;
     private Set<String> alphabet;
     private Set<String> finalStates;
     private Map<String, Map<String, Set<String>>> transitions;
 
-    public FiniteAutomaton(Set<String> states, Set<String> alphabet, Set<String> finalStates,
-                           Map<String, Map<String, Set<String>>> transitions) {
+    public Converter(Set<String> states, Set<String> alphabet, Set<String> finalStates,
+                     Map<String, Map<String, Set<String>>> transitions) {
         this.states = states;
         this.alphabet = alphabet;
         this.finalStates = finalStates;
