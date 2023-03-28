@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="83978a5f-12b9-425f-9d34-a2a751d00a0c" name="Changes" comment="Added Lab3">
+      <change afterPath="$PROJECT_DIR$/out/production/lab2/automaton/FiniteAutomaton.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/lab2/converts/GrammarToFAConverter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/lab2/grammar/Grammar.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/lab2/grammar/GrammarGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/lab2/grammar/StringChecker.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/lab2/lexer/Lexer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/lab2/lexer/LexicalException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/lab2/lexer/Token.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/report1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/report3.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/automaton/FiniteAutomaton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/converts/GrammarToFAConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/grammar/Grammar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/grammar/GrammarGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/grammar/StringChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lexer/Lexer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lexer/LexicalException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lexer/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/lab1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/out/production/lab1/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/out/production/lab1/a/Grammar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/out/production/lab1/b/GrammarGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/out/production/lab1/c/FiniteAutomaton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/out/production/lab1/c/GrammarToFAConverter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/out/production/lab1/d/FiniteAutomatonD.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/report/report.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/src/a/Grammar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/src/b/GrammarGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/src/c/FiniteAutomaton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/src/c/GrammarToFAConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/src/d/FiniteAutomatonD.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/FiniteAutomaton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2/converts/Converter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/GrammarClassifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2/automaton/GrammarClassifier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/Main$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2/Main$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/Main$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2/Main$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/report.md" beforeDir="false" afterPath="$PROJECT_DIR$/report/report2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FiniteAutomaton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/converts/Converter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrammarClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/automaton/GrammarClassifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NeV26v2CEcl9q0N9GruLSfobe0" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Andrei/Univer/Semestrul4/LFAF/lab2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="83978a5f-12b9-425f-9d34-a2a751d00a0c" name="Changes" comment="" />
+      <created>1680024325008</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680024325008</updated>
+      <workItem from="1680024326572" duration="3926000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
