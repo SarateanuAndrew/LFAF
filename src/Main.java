@@ -5,14 +5,14 @@ import converts.GrammarToFAConverter;
 import grammar.Grammar;
 import grammar.GrammarGenerator;
 import grammar.StringChecker;
-import lexer.Lexer;
-import lexer.LexicalException;
 import lexer.Token;
 
 import java.util.*;
 
+import static lexer.Lexer.tokenize;
+
 public class Main {
-    public static void main(String[] args) throws LexicalException {
+    public static void main(String[] args) {
         System.out.println("Usage of B");
         GrammarGenerator.generateValidStrings(5).forEach(System.out::println);
         System.out.println();
@@ -99,8 +99,7 @@ public class Main {
 
         //Check Lexer
         System.out.println("Check Lexer");
-        Lexer lexer = new Lexer("3+4*(2-1)/5");
-        List<Token> tokens = lexer.lex();
+        ArrayList<Token> tokens = tokenize("x+42*y-z/2");
         for (Token token : tokens) {
             System.out.println(token);
         }

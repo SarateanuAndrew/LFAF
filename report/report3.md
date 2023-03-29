@@ -4,140 +4,75 @@
 
 ----
 
-## Theory
+## Overview
+&ensp;&ensp;&ensp; The term lexer comes from lexical analysis which, in turn, represents the process of extracting lexical tokens from a string of characters. There are several alternative names for the mechanism called lexer, for example tokenizer or scanner. The lexical analysis is one of the first stages used in a compiler/interpreter when dealing with programming, markup or other types of languages.
+&ensp;&ensp;&ensp; The tokens are identified based on some rules of the language and the products that the lexer gives are called lexemes. So basically the lexer is a stream of lexemes. Now in case it is not clear what's the difference between lexemes and tokens, there is a big one. The lexeme is just the byproduct of splitting based on delimiters, for example spaces, but the tokens give names or categories to each lexeme. So the tokens don't retain necessarily the actual value of the lexeme, but rather the type of it and maybe some metadata.
 
-&ensp;&ensp;&ensp; A finite automaton is grammar mechanism used to represent processes of different kinds. It can be compared
-to grammar state machine as they both have similar structures and purpose as well. The word finite signifies the fact that an
-automaton comes with grammar starting and grammar set of final states. In other words, for process modeled by an automaton has grammar
-beginning and an ending.
-
-&ensp;&ensp;&ensp; Based on the structure of an automaton, there are cases in which with one transition multiple states
-can be reached which causes non determinism to appear. In general, when talking about systems theory the word
-determinism characterizes how predictable grammar system is. If there are random variables involved, the system becomes
-stochastic or non deterministic.
-
-&ensp;&ensp;&ensp; That being said, the automata can be classified as non-/deterministic, and there is in fact grammar
-possibility to reach determinism by following algorithms which modify the structure of the automaton.
 
 ## Objectives:
+1. Understand what lexical analysis [1] is.
+2. Get familiar with the inner workings of a lexer/scanner/tokenizer.
+3. Implement a sample lexer and show how it works.
 
-1. Understand what an automaton is and what it can be used for.
+## Theory
 
-2. Continuing the work in the same repository and the same project, the following need to be added:
-   grammar. Provide grammar function in your grammar type/class that could classify the grammar based on Chomsky hierarchy.
+&ensp;&ensp;&ensp; A lexer (short for lexical analyzer) is a tool used in programming to break up a stream of characters into meaningful tokens, which can then be parsed and analyzed by a compiler or interpreter. 
+In Java, we can implement a simple lexer using regular expressions to match different patterns of characters.
 
-   b. For this you can use the variant from the previous lab.
-
-3. According to your variant number (by universal convention it is register ID), get the finite automaton definition and
-   do the following tasks:
-
-   grammar. Implement conversion of grammar finite automaton to grammar regular grammar.
-
-   b. Determine whether your FA is deterministic or non-deterministic.
-
-   c. Implement some functionality that would convert an NDFA to grammar DFA.
-
-   d. Represent the finite automaton graphically (Optional, and can be considered as grammar __*bonus point*__):
-
-    - You can use external libraries, tools or APIs to generate the figures/diagrams.
-
-    - Your program needs to gather and send the data about the automaton and the lib/tool/API return the visual
-      representation.
-
-
-## Chomsky hierarchy:
-
-1) Unrestricted grammar
-2) Context-sensitive grammars
-3) Context-free grammars
-4) Regular grammars
-
-I defined grammar function classifyGrammar that takes three parameters: VN (the set of non-terminals), VT (the set of
-terminals), and P (the set of productions). The function first checks if the grammar is regular by ensuring that each
-production is of the form A → aB or A → grammar, where A is grammar non-terminal, grammar is grammar terminal, and B is an optional
-non-terminal. If the grammar is regular, we return "Regular grammar". If not, we proceed to check if the grammar is
-context-free by ensuring that each production is of the form A → α, where A is grammar non-terminal and α is grammar string of
-terminals and non-terminals. If the grammar is context-free, we return "Context-free grammar". If not, we proceed to
-check if the grammar is context-sensitive by ensuring that each production is of the form αBβ → αγβ, where B is grammar
-non-terminal and α, β, and γ are strings of terminals and non-terminals. If the grammar is context-sensitive, we
-return "Context-sensitive grammar". If not, the grammar is unrestricted, and we return "Unrestricted grammar".
+First, I define three regular expressions using the Pattern class: NUMBER_PATTERN matches one or more digits, 
+IDENTIFIER_PATTERN matches one or more letters, and OPERATOR_PATTERN matches one of the four basic arithmetic operators.
 
 ```java
-Set<String> VN = new HashSet<>(Arrays.asList("S", "B", "C"));
-        Set<String> VT = new HashSet<>(Arrays.asList("grammar", "b", "c"));
-        Map<String, List<String>> P = new HashMap<>();
-        P.put("S", List.of("aB"));
-        P.put("B", Arrays.asList("aC", "bB"));
-        P.put("C", Arrays.asList("bB", "c", "aS"));
-        String classification = automaton.GrammarClassifier.classifyGrammar(VN, VT, P);
-        System.out.println(classification);
+private static final Pattern NUMBER_PATTERN = Pattern.compile("\\d+");
+private static final Pattern IDENTIFIER_PATTERN = Pattern.compile("[a-zA-Z]+");
+private static final Pattern OPERATOR_PATTERN = Pattern.compile("[+\\-*/]");
 ```
 
-Also I write function of conversion of grammar finite automaton to grammar regular grammar, that Determine whether your FA is deterministic or non-deterministic
-```java
-Set<String> states = new HashSet<>(Arrays.asList("q0", "q1", "q2"));
-        Set<String> alphabet = new HashSet<>(Arrays.asList("grammar", "b"));
-        Set<String> finalStates = new HashSet<>(Collections.singletonList("q2"));
-        Map<String, Map<String, Set<String>>> transitions = new HashMap<>();
-
-        transitions.put("q0", new HashMap<>() {{
-        put("grammar", new HashSet<>(Collections.singletonList("q0")));
-        put("b", new HashSet<>(Collections.singletonList("q0")));
-        }});
-
-        transitions.put("q1", new HashMap<>() {{
-        put("grammar", new HashSet<>(Collections.singletonList("q0")));
-        put("b", new HashSet<>(Collections.singletonList("q2")));
-        }});
-
-        transitions.put("q2", new HashMap<>() {{
-        put("grammar", new HashSet<>(Collections.singletonList("q0")));
-        put("b", new HashSet<>(Collections.singletonList("q2")));
-        }});
-
-        converts.Converter fa = new converts.Converter(states, alphabet, finalStates, transitions);
-
-        // Convert to regular grammar and print
-        fa.convertToRegularGrammar();
-
-        // Determine whether deterministic or non-deterministic and print result
-        System.out.println("Deterministic: " + fa.isDeterministic());
-```
-
-And at the last I implement some functionality that would convert an NDFA to grammar DFA, but my finite Automata is deterministic that's why I cannot show something changing
+Next, I define a tokenize method that takes an input string and returns an ArrayList of Token objects.
 
 ```java
-private Set<String> states;
-private Set<String> acceptingStates;
-private String startState;
-private Map<String, Map<Character, Set<String>>>transitions;
+ public static ArrayList<Token> tokenize(String input) {
+        ArrayList<Token> tokens = new ArrayList<>();
+```
 
-public CheckIdIsGood(Set<String> states,Set<String> acceptingStates,String startState,
-        Map<String, Map<Character, Set<String>>>transitions){
-        this.states=states;
-        this.acceptingStates=acceptingStates;
-        this.startState=startState;
-        this.transitions=transitions;
-        }
+I use a while loop to repeatedly match the input against each of the three patterns in turn, 
+adding the corresponding token to the output list and removing the matched characters from the input string.
 
-public boolean accepts(String input){
-        String currentState=startState;
-        for(char c:input.toCharArray()){
-        if(!transitions.containsKey(currentState)||!transitions.get(currentState).containsKey(c)){
-        return false;
-        }
-        currentState=transitions.get(currentState).get(c).iterator().next();
-        }
-        return acceptingStates.contains(currentState);
+```java
+while (!input.isEmpty()) {
+Matcher numberMatcher = NUMBER_PATTERN.matcher(input);
+Matcher identifierMatcher = IDENTIFIER_PATTERN.matcher(input);
+Matcher operatorMatcher = OPERATOR_PATTERN.matcher(input);
+```
+
+If none of the patterns match, it throw an exception indicating that the input contains an unrecognized character.
+
+```java
+else {
+        throw new RuntimeException("Unrecognized token: " + input.charAt(0));
         }
 ```
+
+Finally, I define a main method that demonstrates the lexer in action. I create an example input string, 
+tokenize it using the tokenize method, and print out each resulting token.
+
+```java
+//Check Lexer
+        System.out.println("Check Lexer");
+                ArrayList<Token> tokens = tokenize("x+42*y-z/2");
+        for (Token token : tokens) {
+        System.out.println(token);
+        }
+```
+
 
 ## Conclusions
 
-I learned what an automaton is and what it can be used for, how to implement grammar function that could classify the grammar based on Chomsky hierarchy. Also how
-to implement conversion of grammar finite automaton to grammar regular grammar, implement conversion of grammar finite automaton to grammar regular grammar and determine whether grammar FA is deterministic or non-deterministic. 
-I created some functionality that would convert an NDFA to grammar DFA, but as my FA was deterministic, I had no possibility to check it.
+I learned what lexical analysis is, I got familiar with the inner workings of a lexer/scanner/tokenizer and created Token and an enum 
+TokenType to specify the symbols. The Implementation is written in the Lexer class. Finally, I have applied the function with the 
+string: "x+42*y-z/2".
 
-## References
+## References:
+[1] [A sample of a lexer implementation](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/LangImpl01.html)
 
-- [geeksforgeeks.org](https://www.geeksforgeeks.org/introduction-of-finite-automata/)
+[2] [Lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis)
