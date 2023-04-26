@@ -1,5 +1,6 @@
 import automaton.FiniteAutomaton;
 import automaton.GrammarClassifier;
+import chomsky.Chomsky;
 import converts.Converter;
 import converts.GrammarToFAConverter;
 import grammar.Grammar;
@@ -99,9 +100,48 @@ public class Main {
 
         //Check Lexer
         System.out.println("Check Lexer");
-        ArrayList<Token> tokens = tokenize("x+42*y-z/2");
+        ArrayList<Token> tokens = tokenize("x+12+42*y-z/2");
         for (Token token : tokens) {
             System.out.println(token);
         }
+
+        //Chomsky Normal Form
+        System.out.println();
+        System.out.println("Chomsky Normal Form:");
+
+
+        Chomsky chomsky = new Chomsky("S",
+                List.of("S", "A", "B", "C", "E"),
+                List.of("a", "b"),
+                new HashMap<>() {{
+                    put("S", List.of("bAC", "B"));
+                    put("A", List.of("a", "aS", "bCaCb"));
+                    put("B", List.of("AC", "bS", "aAa"));
+                    put("C", List.of("ε", "AB"));
+                    put("E", List.of("BA"));
+                }});
+
+//        System.out.println("Original:");
+//        chomsky.printGrammar();
+
+        chomsky.eliminateEpsilonProductions();
+        System.out.println("Epsilon:");
+        chomsky.printGrammar();
+
+        chomsky.eliminateUnitProductions();
+        System.out.println("Unit productions:");
+        chomsky.printGrammar();
+
+        chomsky.eliminateInaccessibleSymbols();
+        System.out.println("Inaccessible Symbols:");
+        chomsky.printGrammar();
+
+        chomsky.eliminateNonproductive();
+        System.out.println("Nonproductive Characters:");
+        chomsky.printGrammar();
+
+        chomsky.toCnf();
+        System.out.println("Chomsky Normal Form:");
+        chomsky.printGrammar();
     }
 }
