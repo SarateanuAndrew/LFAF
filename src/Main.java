@@ -3,6 +3,10 @@ import automaton.GrammarClassifier;
 import chomsky.Chomsky;
 import converts.Converter;
 import converts.GrammarToFAConverter;
+import edu.stanford.nlp.ling.SentenceUtils;
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
+import edu.stanford.nlp.parser.lexparser.TreeBinarizer;
+import edu.stanford.nlp.trees.*;
 import grammar.Grammar;
 import grammar.GrammarGenerator;
 import grammar.StringChecker;
@@ -143,5 +147,35 @@ public class Main {
         chomsky.toCnf();
         System.out.println("Chomsky Normal Form:");
         chomsky.printGrammar();
+
+        System.out.println("Parser: ");
+
+        // Path to the pretrained English PCFG parser model
+        String modelPath = "englishPCFG.ser.gz";
+
+        // Text to parse
+        String text = "x+12+42*y-z/2";
+
+        // Initialize the parser
+        LexicalizedParser parser = LexicalizedParser.loadModel(modelPath);
+        TreeBinarizer binarizer = TreeBinarizer.simpleTreeBinarizer(parser.getTLPParams().headFinder(), parser.treebankLanguagePack());
+
+        // Tokenize the text
+        String[] words = text.split(" ");
+
+        // Parse the sentence
+        Tree parseTree = parser.apply(SentenceUtils.toWordList(words));
+        Tree binarizedTree = binarizer.transformTree(parseTree);
+
+        // Extract syntactic information
+        TreebankLanguagePack tlp = parser.treebankLanguagePack();
+        GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
+        GrammaticalStructure gs = gsf.newGrammaticalStructure(binarizedTree);
+        Collection<TypedDependency> dependencies = gs.typedDependenciesCCprocessed();
+
+        // Print the dependencies
+        for (TypedDependency dependency : dependencies) {
+            System.out.println(dependency);
+        }
     }
 }
